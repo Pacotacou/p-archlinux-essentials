@@ -35,7 +35,7 @@ check_success "System update"
 ########################
 
 # Define package groups
-SYSTEM_UTILS="ntfs-3g gufw power-profiles-daemon"
+SYSTEM_UTILS="ntfs-3g dosfstools gufw power-profiles-daemon"
 PRINTER_UTILS="system-config-printer cups gutenprint sane-airscan"
 FONTS="noto-fonts-cjk adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts"
 THEME_DEPS="gtk-engine-murrine sassc"
