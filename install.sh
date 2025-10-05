@@ -60,9 +60,9 @@ sudo pacman -S --needed --noconfirm $FONTS
 check_success "Fonts installation"
 
 # Theme dependencies
-print_status "Installing theme dependencies"
-sudo pacman -S --needed --noconfirm $THEME_DEPS
-check_success "Theme dependencies installation"
+# print_status "Installing theme dependencies"
+# sudo pacman -S --needed --noconfirm $THEME_DEPS
+# check_success "Theme dependencies installation"
 
 # Browser utilities
 print_status "Installing browser utilities"
@@ -114,101 +114,101 @@ fi
 # Theme Installation   #
 ########################
 
-print_status "Installing themes"
-# Create themes directory if it doesn't exist
-mkdir -p ~/Themes
-cd ~/Themes
-
-# Install Colloid GTK theme
-print_status "Installing Colloid GTK theme"
-if [ -d "Colloid-gtk-theme" ]; then
-    cd Colloid-gtk-theme
-    git pull
-    check_success "Colloid GTK theme updated"
-else
-    git clone https://github.com/vinceliuice/Colloid-gtk-theme.git
-    check_success "Colloid GTK theme repository cloned"
-    cd Colloid-gtk-theme
-fi
-
-./install.sh -l --tweaks rimless
-check_success "Colloid GTK theme installed for user"
-
-sudo ./install.sh --tweaks rimless
-check_success "Colloid GTK theme installed system-wide"
-
-cd ..
-
-# Install Colloid icon theme
-print_status "Installing Colloid icon theme"
-if [ -d "Colloid-icon-theme" ]; then
-    cd Colloid-icon-theme
-    git pull
-    check_success "Colloid icon theme updated"
-else
-    git clone https://github.com/vinceliuice/Colloid-icon-theme.git
-    check_success "Colloid icon theme repository cloned"
-    cd Colloid-icon-theme
-fi
-
-./install.sh
-check_success "Colloid icon theme installed"
-
-cd ..
-
-# Install WhiteSur cursors
-print_status "Installing WhiteSur cursors"
-if [ -d "WhiteSur-cursors" ]; then
-    cd WhiteSur-cursors
-    git pull
-    check_success "WhiteSur cursors updated"
-else
-    git clone https://github.com/vinceliuice/WhiteSur-cursors.git
-    check_success "WhiteSur cursors repository cloned"
-    cd WhiteSur-cursors
-fi
-
-./install.sh
-check_success "WhiteSur cursors installed"
-
-cd ..
-
-########################
-# Apply Themes         #
-########################
-
-print_status "Applying themes"
-gsettings set org.gnome.desktop.interface gtk-theme "Colloid-Dark"
-gsettings set org.gnome.desktop.interface icon-theme "Colloid-Dark"
-gsettings set org.gnome.desktop.interface cursor-theme "WhiteSur-cursors"
-gsettings set org.gnome.shell.extensions.user-theme name "Colloid-Dark"
-check_success "Themes applied to GNOME"
-
-########################
-# Flatpak Theme Support #
-########################
-
-print_status "Setting up Flatpak theme integration"
-if [ -d "stylepak" ]; then
-    cd stylepak
-    git pull
-    check_success "Stylepak updated"
-else
-    git clone https://github.com/refi64/stylepak.git
-    check_success "Stylepak repository cloned"
-    cd stylepak
-fi
-
-sudo pacman -S --needed --noconfirm ostree appstream-glib
-check_success "Stylepak dependencies installed"
-
-./stylepak install-system
-check_success "Stylepak system integration"
-
-./stylepak install-user
-check_success "Stylepak user integration"
-
-cd ..
+# print_status "Installing themes"
+# # Create themes directory if it doesn't exist
+# mkdir -p ~/Themes
+# cd ~/Themes
+#
+# # Install Colloid GTK theme
+# print_status "Installing Colloid GTK theme"
+# if [ -d "Colloid-gtk-theme" ]; then
+#     cd Colloid-gtk-theme
+#     git pull
+#     check_success "Colloid GTK theme updated"
+# else
+#     git clone https://github.com/vinceliuice/Colloid-gtk-theme.git
+#     check_success "Colloid GTK theme repository cloned"
+#     cd Colloid-gtk-theme
+# fi
+#
+# ./install.sh -l --tweaks rimless
+# check_success "Colloid GTK theme installed for user"
+#
+# sudo ./install.sh --tweaks rimless
+# check_success "Colloid GTK theme installed system-wide"
+#
+# cd ..
+#
+# # Install Colloid icon theme
+# print_status "Installing Colloid icon theme"
+# if [ -d "Colloid-icon-theme" ]; then
+#     cd Colloid-icon-theme
+#     git pull
+#     check_success "Colloid icon theme updated"
+# else
+#     git clone https://github.com/vinceliuice/Colloid-icon-theme.git
+#     check_success "Colloid icon theme repository cloned"
+#     cd Colloid-icon-theme
+# fi
+#
+# ./install.sh
+# check_success "Colloid icon theme installed"
+#
+# cd ..
+#
+# # Install WhiteSur cursors
+# print_status "Installing WhiteSur cursors"
+# if [ -d "WhiteSur-cursors" ]; then
+#     cd WhiteSur-cursors
+#     git pull
+#     check_success "WhiteSur cursors updated"
+# else
+#     git clone https://github.com/vinceliuice/WhiteSur-cursors.git
+#     check_success "WhiteSur cursors repository cloned"
+#     cd WhiteSur-cursors
+# fi
+#
+# ./install.sh
+# check_success "WhiteSur cursors installed"
+#
+# cd ..
+#
+# ########################
+# # Apply Themes         #
+# ########################
+#
+# print_status "Applying themes"
+# gsettings set org.gnome.desktop.interface gtk-theme "Colloid-Dark"
+# gsettings set org.gnome.desktop.interface icon-theme "Colloid-Dark"
+# gsettings set org.gnome.desktop.interface cursor-theme "WhiteSur-cursors"
+# gsettings set org.gnome.shell.extensions.user-theme name "Colloid-Dark"
+# check_success "Themes applied to GNOME"
+#
+# ########################
+# # Flatpak Theme Support #
+# ########################
+#
+# print_status "Setting up Flatpak theme integration"
+# if [ -d "stylepak" ]; then
+#     cd stylepak
+#     git pull
+#     check_success "Stylepak updated"
+# else
+#     git clone https://github.com/refi64/stylepak.git
+#     check_success "Stylepak repository cloned"
+#     cd stylepak
+# fi
+#
+# sudo pacman -S --needed --noconfirm ostree appstream-glib
+# check_success "Stylepak dependencies installed"
+#
+# ./stylepak install-system
+# check_success "Stylepak system integration"
+#
+# ./stylepak install-user
+# check_success "Stylepak user integration"
+#
+# cd ..
 
 ########################
 # Completion          #
